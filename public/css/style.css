@@ -1,5 +1,29 @@
 h1 {
     text-align: center;
     color: cornflowerblue;
+    margin: 0 0 20px 0;
   }
   
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.content {
+  padding: 20px;
+  min-height: 100%;
+  margin: 0 auto -50px;
+}
+.footer, .push {
+  height: 50px;
+}
+
+* {
+  box-sizing: border-box;
+}
+body {
+  font: 16px sans-serif;
+}
+p {
+  margin: 20px 0 0 0;
+}
