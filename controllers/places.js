@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const db = require('../models')
+const places = require('../models/places')
 
 router.get('/', (req, res) => {
   db.Place.find()
@@ -53,11 +54,21 @@ router.put('/:id', (req, res) => {
 })
 
 router.delete('/:id', (req, res) => {
-  res.send('DELETE /places/:id stub')
+  let id = Number(req.params.id)
+  if(isNaN(id)) {
+    res.render('error404')
+  }
+  else if (!places[id]){
+    res.render('error404')
+  }
+  else{
+    places.splice(id, 1)
+    res.redirect('/places')
+  }
 })
 
 router.get('/:id/edit', (req, res) => {
-  res.send('GET edit form stub')
+  res.render('places/edit')
 })
 
 router.post('/:id/rant', (req, res) => {
