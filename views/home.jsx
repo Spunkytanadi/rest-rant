@@ -7,9 +7,9 @@ function home () {
             <main>
               <h1>REST-Rant</h1>
               <div>
-                <img src="/images/coffee-cat.png" alt="Chia Fruit Shake" />
+                <img src="/images/Food-for-life.jpg" alt="bowl of vegetables"/>
                 <div>
-                  Photo by <a href="AUTHOR_LINK">Brenda Godinez</a> on <a href="UNSPLASH_LINK">Unsplash</a>
+                  Photo by <a href="AUTHOR_LINK">Anna Pelzer</a> on <a href="UNSPLASH_LINK">Unsplash</a>
                 </div>
              </div>
               <a href="/places">
@@ -18,6 +18,6 @@ function home () {
             </main>
            </Def>
     )
-}
+    }
 
 module.exports = home
