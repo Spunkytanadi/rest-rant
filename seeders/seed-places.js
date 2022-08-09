@@ -15,7 +15,6 @@ db.Place.create([{
     pic: '/images/coffee-cat.png',
     founded: 2020
 }])
-
 .then(() => {
     console.log('Success!')
     process.exit()
