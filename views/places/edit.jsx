@@ -26,6 +26,8 @@ function edit_form (data) {
                             value={data.place.pic} 
                         />
                     </div>
+                </div>
+                <div className="row">
                     <div className="form-group col-sm-4">
                         <label htmlFor="city">City</label>
                         <input 
@@ -51,7 +53,7 @@ function edit_form (data) {
                             name="founded"
                             value={data.place.founded}/>
                     </div>
-                    </div>
+                </div>
                     <div className="form-group">
                          <label htmlFor="cuisines">Cuisines</label>
                         <input 
