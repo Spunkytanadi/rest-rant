@@ -43,7 +43,7 @@ router.get('/new', (req, res) => {
 })
 
 router.get('/:id', (req, res) => {
-  db.Place.findById(req.params.id)
+  db.Place.findByIdandUpdate(req.params.id)
   .populate('comments')
   .then(place => {
     console.log(place.comments)
@@ -56,54 +56,81 @@ router.get('/:id', (req, res) => {
 })
 
 router.put('/:id', (req, res) => {
-  let id = Number(req.params.id)
-  if (isNaN(id)){
-    res.render('error404')
-  }
-  else if(!places[id]){
-    res.render('error404')
-  }
-  else{
-    if(!req.body.pic){
-      req.body.pic = 'http://placekitten.com/400/400'
-    }
-    if(!req.body.city){
-      req.body.city = 'Anytown'
-    }
-    if(!req.body.state){
-      req.body.state = 'USA'
-    }
-    places[id] = req.body
-    res.redirect(`/places/${id}`)
-  }
+  db.Place.findByIdAndUodate(req.params.id, rq.body)
+    .then(() => {
+      re.redirect(`/places/${re.params.id}`)
+  })
+    .catch(err => {
+      console.log('err', err)
+      res.render('error404')
+    })
 })
+
+  // let id = Number(req.params.id)
+  // if (isNaN(id)){
+  //   res.render('error404')
+  // }
+  // else if(!places[id]){
+  //   res.render('error404')
+  // }
+  // else{
+  //   if(!req.body.pic){
+  //     req.body.pic = 'http://placekitten.com/400/400'
+  //   }
+  //   if(!req.body.city){
+  //     req.body.city = 'Anytown'
+  //   }
+  //   if(!req.body.state){
+  //     req.body.state = 'USA'
+  //   }
+  //   places[id] = req.body
+  //   res.redirect(`/places/${id}`)
+  // }
+//})
 
 router.delete('/:id', (req, res) => {
-  let id = Number(req.params.id)
-  if(isNaN(id)) {
-    res.render('error404')
-  }
-  else if (!places[id]){
-    res.render('error404')
-  }
-  else{
-    places.splice(id, 1)
-    res.redirect('places')
-  }
-})
+  db.Place.findByIdAndDelete(req.params.id)
+    .then(() => {
+      res.redirect('/places')
+    })
+      .catch(err => {
+        console.log('err', err)
+        res.render('error404')
+      })
+  })
+  // let id = Number(req.params.id)
+  // if(isNaN(id)) {
+  //   res.render('error404')
+  // }
+  // else if (!places[id]){
+  //   res.render('error404')
+  // }
+  // else{
+  //   places.splice(id, 1)
+  //   res.redirect('places')
+  // }
+//})
 
 router.get('/:id/edit', (req, res) => {
-  let id = Number(req.params.id)
-  if(isNaN(id)){
-    res.render('error404')
-  }
-  else if(!places[id]){
-    res.render('error404')
-  }
-  else {
-    res.render('places/edit', {places: places[id]})
-  }
-})
+  db.Place.findById(req.params.id)
+    .then(place => {
+      res.render('places/edit', { place})
+    })
+    .catch(err => {
+      res.render('error404')
+    })
+  })
+//   let id = Number(req.params.id)
+//   if(isNaN(id)){
+//     res.render('error404')
+//   }
+//   else if(!places[id]){
+//     res.render('error404')
+//   }
+//   else {
+//     res.render('places/edit', {places: places[id]})
+//   }
+// })
 
 router.post('/:id/comment', (req, res) => {
   console.log(req.body)

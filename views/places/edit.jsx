@@ -1,5 +1,5 @@
-const React = require('react')
-const Def = require('../default')
+const React = require('react');
+const Def = require('../default');
 
 function edit_form (data) {
     return (
@@ -15,7 +15,8 @@ function edit_form (data) {
                             id="name" 
                             name="name" 
                             value={data.place.name} 
-                            required />
+                            required 
+                        />
                     </div>
                     <div className="form-group col-sm-6">
                         <label htmlFor="pic">Place Picture</label>
@@ -51,7 +52,8 @@ function edit_form (data) {
                             className="form-control" 
                             id="founded"
                             name="founded"
-                            value={data.place.founded}/>
+                            value={data.place.founded}
+                        />
                     </div>
                 </div>
                     <div className="form-group">
@@ -61,14 +63,19 @@ function edit_form (data) {
                             id="cuisines" 
                             name="cuisines" 
                             value={data.place.cuisines} 
-                            required />
+                            required 
+                        />
                     </div>
-                    <input className="btn btn-primary" type="submit" value="Update Place" />
+                    <input 
+                        className="btn btn-primary" 
+                        type="submit" 
+                        value="Update Place"
+                    />
                 </div>
             </form>
           </main>
         </Def>
-    )
+    );
 }
 
-module.exports = edit_form
+module.exports = edit_form;

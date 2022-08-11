@@ -15,7 +15,7 @@ function new_form (data) {
           <main>
             <h1>Add a New Place</h1>
             {message}
-            <form method="POST" action="./places">
+            <form method="POST" action="/places">
                 <div className="row">
                     <div className="form-group col-sm-6">
                         <label htmlFor="name">Place Name</label>
@@ -35,6 +35,14 @@ function new_form (data) {
                         <label htmlFor="state">State</label>
                         <input className="form-control" id="state" name="state" />
                     </div>
+                    <div className="form-group">
+                        <label htmlFor="cuisines">Cuisines</label>
+                        <input 
+                            className="form-control" 
+                            id="cuisines" name="cuisines" 
+                            required 
+                    />
+                    </div>
                     <div className="form-group col-sm-4">
                         <label htmlFor="founded">Founded Year</label>
                         <input 
@@ -42,14 +50,11 @@ function new_form (data) {
                             className="form-control" 
                             id="founded" 
                             name="founded" 
-                            defaultValue={new Date().getFullYear()} />
+                            defaultValue={new Date().getFullYear()}
+                        />
                     </div>
-                </div>
-                <div className="form-group">
-                    <label htmlFor="cuisines">Cuisines</label>
-                    <input className="form-control" id="cuisines" name="cuisines" required />
-                </div>
                     <input className="btn btn-primary" type="submit" value="Add Place" />
+                </div>
             </form>
           </main>
         </Def>
