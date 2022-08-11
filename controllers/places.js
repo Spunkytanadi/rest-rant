@@ -13,6 +13,11 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
+  if (!req.body.pic) {
+    // Default image if one is not provided
+    req.body.pic = "http://placekitten.com/400/400";
+  }
+
   db.Place.create(req.body)
   .then(() => {
     res.redirect('/places')
@@ -25,7 +30,7 @@ router.post('/', (req, res) => {
         message += `${err.errors[field].message}`
       }
       console.log('Validation error message', message)
-      res.render('/places/new', {message})
+      res.render('places/new', {message})
     }
     else {
       res.render('error404')
@@ -34,7 +39,7 @@ router.post('/', (req, res) => {
 })
 
 router.get('/new', (req, res) => {
-  res.render('/places/new')
+  res.render('places/new')
 })
 
 router.get('/:id', (req, res) => {
@@ -42,7 +47,7 @@ router.get('/:id', (req, res) => {
   .populate('comments')
   .then(place => {
     console.log(place.comments)
-    res.render('/places/show', { place })
+    res.render('places/show', { place })
   })
   .catch(err => {
     console.log('err', err)
@@ -83,7 +88,7 @@ router.delete('/:id', (req, res) => {
   }
   else{
     places.splice(id, 1)
-    res.redirect('/places')
+    res.redirect('places')
   }
 })
 
@@ -96,7 +101,7 @@ router.get('/:id/edit', (req, res) => {
     res.render('error404')
   }
   else {
-    res.render('/places/edit', {places: places[id]})
+    res.render('places/edit', {places: places[id]})
   }
 })
 

@@ -7,7 +7,7 @@ function home () {
             <main>
               <h1>REST-Rant</h1>
               <div>
-                <img src="/images/Food-for-life.jpg" alt="bowl of vegetables"/>
+                <img className="col-sm-12" src="./images/Food-for-life.jpg" alt="bowl of vegetables" />
                 <div>
                   Photo by <a href="AUTHOR_LINK">Anna Pelzer</a> on <a href="UNSPLASH_LINK">Unsplash</a>
                 </div>
