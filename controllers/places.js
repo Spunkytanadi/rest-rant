@@ -43,7 +43,7 @@ router.get('/new', (req, res) => {
 })
 
 router.get('/:id', (req, res) => {
-  db.Place.findByIdandUpdate(req.params.id)
+  db.Place.findByIdAndUpdate(req.params.id)
   .populate('comments')
   .then(place => {
     console.log(place.comments)
@@ -56,7 +56,7 @@ router.get('/:id', (req, res) => {
 })
 
 router.put('/:id', (req, res) => {
-  db.Place.findByIdAndUodate(req.params.id, rq.body)
+  db.Place.findByIdAndUpdate(req.params.id, rq.body)
     .then(() => {
       re.redirect(`/places/${re.params.id}`)
   })
